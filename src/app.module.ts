@@ -4,13 +4,15 @@ import { AppService } from "./app.service";
 
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import configuration from "./config/configuration";
-import { LoggerModule } from "./shared/logger/pino.logger.module";
+// import { LoggerModule } from "./shared/logger/pino.logger.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { CoursesModule } from "./modules/courses/courses.module";
 import databaseConfig from "./config/database.config";
+import { SharedModule } from "./shared/shared.module";
 @Module({
   imports: [
-    LoggerModule,
+    SharedModule,
+    // LoggerModule,
     ConfigModule.forRoot({
       load: [configuration, databaseConfig],
       isGlobal: true,
@@ -24,6 +26,6 @@ import databaseConfig from "./config/database.config";
   ],
   controllers: [AppController],
   providers: [AppService],
-  exports: [LoggerModule],
+  exports: [],
 })
 export class AppModule {}

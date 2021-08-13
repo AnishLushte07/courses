@@ -1,9 +1,9 @@
 import { Module } from "@nestjs/common";
 
-import { PinoLogger } from "./pino.logger.service";
+import { PinoLogger } from "./logger/pino.logger.service";
 
 @Module({
   providers: [PinoLogger],
   exports: [PinoLogger],
 })
-export class LoggerModule {}
+export class SharedModule {}

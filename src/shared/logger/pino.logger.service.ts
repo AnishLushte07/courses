@@ -2,7 +2,7 @@ import pino from "pino";
 import * as os from "os";
 
 import { LoggerService } from "@nestjs/common";
-import { Injectable } from '@nestjs/common';
+import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 export interface PinoLogger {
   pino?: pino.Logger;
@@ -11,7 +11,6 @@ export interface PinoLogger {
 @Injectable()
 export class PinoLogger implements LoggerService {
   constructor(private config: ConfigService) {
-    console.log('pino initialted')
     this.pino = pino({
       useLevelLabels: true,
       prettyPrint: this.config.get("environment") === "development",
@@ -29,15 +28,13 @@ export class PinoLogger implements LoggerService {
    * Write a 'log' level log.
    */
   log(message: any, ...optionalParams: any[]) {
-    console.log(message)
-    this.pino.info(message)
+    this.pino.info(message);
   }
 
   /**
    * Write an 'error' level log.
    */
   error(message: any, ...optionalParams: any[]) {
-    console.log(message)
     this.pino.error(message);
   }
 
@@ -45,7 +42,6 @@ export class PinoLogger implements LoggerService {
    * Write a 'warn' level log.
    */
   warn(message: any, ...optionalParams: any[]) {
-    console.log(message)
     this.pino.warn(message);
   }
 
@@ -53,7 +49,6 @@ export class PinoLogger implements LoggerService {
    * Write a 'debug' level log.
    */
   debug?(message: any, ...optionalParams: any[]) {
-    console.log(message)
     this.pino.debug(message);
   }
 
@@ -61,8 +56,6 @@ export class PinoLogger implements LoggerService {
    * Write a 'verbose' level log.
    */
   verbose?(message: any, ...optionalParams: any[]) {
-    console.log(message)
-
-        this.pino.verbose(message);
+    this.pino.verbose(message);
   }
 }
