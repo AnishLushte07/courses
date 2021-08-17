@@ -10,4 +10,5 @@ export default registerAs("pgDatabase", () => ({
   entities: [__dirname + "/**/*.entity{.ts,.js}"],
   migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
   autoLoadEntities: true,
+  logging: process.env.NODE_ENV === "development",
 }));
