@@ -20,6 +20,7 @@ export class PinoLogger implements LoggerService {
         platform: os.platform(),
         processId: process.pid,
         timestamp: new Date(),
+        app_name: this.config.get("app_name"),
       },
     });
   }

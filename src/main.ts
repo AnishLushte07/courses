@@ -24,9 +24,12 @@ async function bootstrap() {
   SwaggerModule.setup("api", app, createDocument(app));
 
   // Starts listening for shutdown hooks
-  // app.enableShutdownHooks();
+  app.enableShutdownHooks();
 
-  await app.listen(configService.get("port")).catch((err) => console.log(err));
+  await app
+    .listen(configService.get("port"))
+    .then(() => console.log("Running server on ", configService.get("port")))
+    .catch((err) => console.log(err));
 }
 
 bootstrap();
